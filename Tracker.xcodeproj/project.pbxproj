@@ -25,6 +25,11 @@
 		812C8F692AD1A4EB00464CA0 /* TimetablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C8F682AD1A4EB00464CA0 /* TimetablePresenter.swift */; };
 		812C8F6B2AD1A4F600464CA0 /* TimetablePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C8F6A2AD1A4F600464CA0 /* TimetablePresenterProtocol.swift */; };
 		812C8F6D2AD1A50F00464CA0 /* TimetableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C8F6C2AD1A50F00464CA0 /* TimetableDelegate.swift */; };
+		812C8F722AD1A93C00464CA0 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C8F712AD1A93C00464CA0 /* TextFieldCell.swift */; };
+		812C8F742AD1A94900464CA0 /* TextFieldCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C8F732AD1A94900464CA0 /* TextFieldCellDelegate.swift */; };
+		812C8F762AD1A99D00464CA0 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C8F752AD1A99D00464CA0 /* TableViewCell.swift */; };
+		812C8F7B2AD1ABF500464CA0 /* ServiceAllTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C8F7A2AD1ABF500464CA0 /* ServiceAllTracker.swift */; };
+		812C8F7D2AD1AC0100464CA0 /* ServiceAllTrackerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C8F7C2AD1AC0100464CA0 /* ServiceAllTrackerProtocol.swift */; };
 		818B3B222ACDC451004C14EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818B3B212ACDC451004C14EE /* AppDelegate.swift */; };
 		818B3B242ACDC451004C14EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818B3B232ACDC451004C14EE /* SceneDelegate.swift */; };
 		818B3B292ACDC451004C14EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 818B3B272ACDC451004C14EE /* Main.storyboard */; };
@@ -64,6 +69,11 @@
 		812C8F682AD1A4EB00464CA0 /* TimetablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetablePresenter.swift; sourceTree = "<group>"; };
 		812C8F6A2AD1A4F600464CA0 /* TimetablePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetablePresenterProtocol.swift; sourceTree = "<group>"; };
 		812C8F6C2AD1A50F00464CA0 /* TimetableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableDelegate.swift; sourceTree = "<group>"; };
+		812C8F712AD1A93C00464CA0 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		812C8F732AD1A94900464CA0 /* TextFieldCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCellDelegate.swift; sourceTree = "<group>"; };
+		812C8F752AD1A99D00464CA0 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		812C8F7A2AD1ABF500464CA0 /* ServiceAllTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAllTracker.swift; sourceTree = "<group>"; };
+		812C8F7C2AD1AC0100464CA0 /* ServiceAllTrackerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAllTrackerProtocol.swift; sourceTree = "<group>"; };
 		818B3B1E2ACDC451004C14EE /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		818B3B212ACDC451004C14EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		818B3B232ACDC451004C14EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +151,25 @@
 			path = TimetableViewController;
 			sourceTree = "<group>";
 		};
+		812C8F702AD1A8EA00464CA0 /* Table&Text Cell */ = {
+			isa = PBXGroup;
+			children = (
+				812C8F752AD1A99D00464CA0 /* TableViewCell.swift */,
+				812C8F712AD1A93C00464CA0 /* TextFieldCell.swift */,
+				812C8F732AD1A94900464CA0 /* TextFieldCellDelegate.swift */,
+			);
+			path = "Table&Text Cell";
+			sourceTree = "<group>";
+		};
+		812C8F792AD1ABD200464CA0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				812C8F7A2AD1ABF500464CA0 /* ServiceAllTracker.swift */,
+				812C8F7C2AD1AC0100464CA0 /* ServiceAllTrackerProtocol.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		818B3B152ACDC451004C14EE = {
 			isa = PBXGroup;
 			children = (
@@ -160,13 +189,13 @@
 		818B3B202ACDC451004C14EE /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				812C8F702AD1A8EA00464CA0 /* Table&Text Cell */,
 				812C8F632AD1A4A700464CA0 /* TimetableViewController */,
 				812C8F582AD19EE900464CA0 /* HabitViewController */,
 				812C8F4A2AD1963100464CA0 /* StatisticsViewController */,
 				818B3B442ACEF204004C14EE /* TrackersViewController */,
 				812C8F4D2AD19C6000464CA0 /* TrackerTypeViewController */,
 				818B3B412ACEF15B004C14EE /* TabBarController */,
-				818B3B382ACEEF06004C14EE /* Model */,
 				818B3B352ACED510004C14EE /* Helper */,
 				818B3B212ACDC451004C14EE /* AppDelegate.swift */,
 				818B3B232ACDC451004C14EE /* SceneDelegate.swift */,
@@ -181,6 +210,8 @@
 		818B3B352ACED510004C14EE /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				812C8F792AD1ABD200464CA0 /* Service */,
+				818B3B382ACEEF06004C14EE /* Model */,
 				818B3B362ACED522004C14EE /* Colors.swift */,
 				812C8F462AD1950700464CA0 /* DayFormatter.swift */,
 				812C8F482AD1959600464CA0 /* ExtensionUIView.swift */,
@@ -309,10 +340,13 @@
 				812C8F622AD19F4000464CA0 /* NewHabitDelegate.swift in Sources */,
 				812C8F4F2AD19C7400464CA0 /* TrackerTypeViewController.swift in Sources */,
 				818B3B4C2ACEF2C5004C14EE /* TrackersViewControllerProtocol.swift in Sources */,
+				812C8F742AD1A94900464CA0 /* TextFieldCellDelegate.swift in Sources */,
 				812C8F532AD19CAE00464CA0 /* TrackerTypePresenter.swift in Sources */,
 				818B3B3E2ACEEF58004C14EE /* TrackerRecord.swift in Sources */,
 				812C8F5C2AD19F0400464CA0 /* HabitViewControllerProtocol.swift in Sources */,
+				812C8F762AD1A99D00464CA0 /* TableViewCell.swift in Sources */,
 				818B3B482ACEF227004C14EE /* TrackersViewPresenter.swift in Sources */,
+				812C8F7B2AD1ABF500464CA0 /* ServiceAllTracker.swift in Sources */,
 				818B3B502ACEF37B004C14EE /* TrackerViewCollectionCellDelegate.swift in Sources */,
 				818B3B4E2ACEF2FB004C14EE /* TrackersViewPresenterProtocol.swift in Sources */,
 				818B3B3A2ACEEF1D004C14EE /* Tracker.swift in Sources */,
@@ -321,7 +355,9 @@
 				812C8F5A2AD19EF400464CA0 /* HabitViewController.swift in Sources */,
 				812C8F602AD19F3000464CA0 /* HabitPresenterProtocol.swift in Sources */,
 				812C8F572AD19CC900464CA0 /* TrackerTypeDelegate.swift in Sources */,
+				812C8F722AD1A93C00464CA0 /* TextFieldCell.swift in Sources */,
 				812C8F4C2AD1963D00464CA0 /* StatisticsViewController.swift in Sources */,
+				812C8F7D2AD1AC0100464CA0 /* ServiceAllTrackerProtocol.swift in Sources */,
 				818B3B222ACDC451004C14EE /* AppDelegate.swift in Sources */,
 				818B3B242ACDC451004C14EE /* SceneDelegate.swift in Sources */,
 				812C8F5E2AD19F2100464CA0 /* HabitPresenter.swift in Sources */,

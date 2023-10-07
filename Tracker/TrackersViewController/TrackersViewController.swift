@@ -152,7 +152,7 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
     }
     
     @objc
-    private func punchTrackerTypeViewController() {
+    private func pushTrackerTypeViewController() {
         let viewCont2 = TrackerTypeViewController()
         let presenter = TrackerTypePresenter()
         
@@ -239,7 +239,7 @@ extension TrackersViewController: UICollectionViewDataSource {
         cell.tracker = tracker
         cell.delegate = self
         cell.completTracker = presenter.isCompletedTracker(tracker)
-        cell.daysCounter = presenter.countRecordsTracker(tracker)
+        cell.daysCounter = presenter.countRecordTracker(tracker)
         return cell
     }
 }

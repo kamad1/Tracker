@@ -1,8 +1,10 @@
-//
-//  TimetablePresenterProtocol.swift
-//  Tracker
-//
-//  Created by Jedi on 07.10.2023.
-//
 
-import Foundation
+
+import UIKit
+
+protocol TimetablePresenterProtocol {
+    var view: TimetableViewControllerProtocol { get }
+    var selectedWeekdays: [Int] { get set }
+    var weekdays: [String] { get }
+    func done()
+}

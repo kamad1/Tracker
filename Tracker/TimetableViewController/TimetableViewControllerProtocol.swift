@@ -1,8 +1,6 @@
-//
-//  TimetableViewControllerProtocol.swift
-//  Tracker
-//
-//  Created by Jedi on 07.10.2023.
-//
+import UIKit
 
-import Foundation
+protocol TimetableViewControllerProtocol: AnyObject {
+    var presenter: TimetablePresenterProtocol? { get }
+}
+

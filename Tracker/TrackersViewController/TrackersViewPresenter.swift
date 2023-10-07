@@ -3,7 +3,7 @@ import UIKit
 final class TrackersViewPresenter: TrackersViewPresenterProtocol {
     var categories: [TrackerCategory] = []
     weak var view: TrackersViewControllerProtocol?
-    private let service = ServiceForTracker()
+    private let service = ServiceAllTracker()
     var search: String = "" {
         didSet {
             updateCategories()
