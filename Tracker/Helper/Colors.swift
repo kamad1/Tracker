@@ -1,31 +1,28 @@
 import UIKit
 
 extension UIColor {
-    enum TrackerColor {
-        static let black = UIColor(named: "TrackerBlack") ?? .black
-        static let white = UIColor(named: "TrackerWhite") ?? .white
-        static let background = UIColor(named: "TrackerBackground") ?? .systemBackground
-        static let blue = UIColor(named: "TrackerBlue") ?? .blue
-        static let red = UIColor(named: "TrackerRed") ?? .red
-        static let gray = UIColor(named: "TrackerGray") ?? .gray
-        static let lightGray = UIColor(named: "TrackerLightGray") ?? .lightGray
-        static let colorSelection1 = UIColor(named: "TrackerColorSelection1") ?? .systemRed
-        static let colorSelection2 = UIColor(named: "TrackerColorSelection2") ?? .systemOrange
-        static let colorSelection3 = UIColor(named: "TrackerColorSelection3") ?? .systemBlue
-        static let colorSelection4 = UIColor(named: "TrackerColorSelection4") ?? .systemPurple
-        static let colorSelection5 = UIColor(named: "TrackerColorSelection5") ?? .systemGreen
-        static let colorSelection6 = UIColor(named: "TrackerColorSelection6") ?? .magenta
-        static let colorSelection7 = UIColor(named: "TrackerColorSelection7") ?? .systemBrown
-        static let colorSelection8 = UIColor(named: "TrackerColorSelection8") ?? .cyan
-        static let colorSelection9 = UIColor(named: "TrackerColorSelection9") ?? .systemTeal
-        static let colorSelection10 = UIColor(named: "TrackerColorSelection10") ?? .systemIndigo
-        static let colorSelection11 = UIColor(named: "TrackerColorSelection11") ?? .orange
-        static let colorSelection12 = UIColor(named: "TrackerColorSelection12") ?? .systemPink
-        static let colorSelection13 = UIColor(named: "TrackerColorSelection13") ?? .systemYellow
-        static let colorSelection14 = UIColor(named: "TrackerColorSelection14") ?? .blue
-        static let colorSelection15 = UIColor(named: "TrackerColorSelection15") ?? .purple
-        static let colorSelection16 = UIColor(named: "TrackerColorSelection16") ?? .systemPurple
-        static let colorSelection17 = UIColor(named: "TrackerColorSelection17") ?? .systemBlue
-        static let colorSelection18 = UIColor(named: "TrackerColorSelection18") ?? .green
-    }
+    static let ypBlack = UIColor(named: "ypBlack")
+    static let ypWhite = UIColor(named: "ypWhite")
+    static let ypGray = UIColor(named: "ypGray")
+    static let ypBackground = UIColor(named: "ypBackground")
+    static let ypBlue = UIColor(named: "ypBlue")
+    static let ypRed = UIColor(named: "ypRed")
+    static let ypSelection1 = UIColor(named: "ypSelection1")
+    static let ypSelection2 = UIColor(named: "ypSelection2")
+    static let ypSelection3 = UIColor(named: "ypSelection3")
+    static let ypSelection4 = UIColor(named: "ypSelection4")
+    static let ypSelection5 = UIColor(named: "ypSelection5")
+    static let ypSelection6 = UIColor(named: "ypSelection6")
+    static let ypSelection7 = UIColor(named: "ypSelection7")
+    static let ypSelection8 = UIColor(named: "ypSelection8")
+    static let ypSelection9 = UIColor(named: "ypSelection9")
+    static let ypSelection10 = UIColor(named: "ypSelection10")
+    static let ypSelection11 = UIColor(named: "ypSelection11")
+    static let ypSelection12 = UIColor(named: "ypSelection12")
+    static let ypSelection13 = UIColor(named: "ypSelection13")
+    static let ypSelection14 = UIColor(named: "ypSelection14")
+    static let ypSelection15 = UIColor(named: "ypSelection15")
+    static let ypSelection16 = UIColor(named: "ypSelection16")
+    static let ypSelection17 = UIColor(named: "ypSelection17")
+    static let ypSelection18 = UIColor(named: "ypSelection18")
 }
