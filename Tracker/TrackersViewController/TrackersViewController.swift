@@ -11,7 +11,7 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
     }
     
     var presenter: TrackersViewPresenterProtocol?
-    
+    var comletedTracker: Bool = false
     //Делегаты
     func didSelectType(_ type: TrackerType) {
         let viewCont3 = HabitViewController()
@@ -37,6 +37,7 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
     
     func toDidCompleted(_ complete: Bool, tracker: Tracker) {
         presenter?.completedTracker(complete, tracker: tracker)
+        comletedTracker = !comletedTracker
     }
 
     
@@ -58,28 +59,30 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
         let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
-        
-        let emptyScreenImage = UIImageView()
-        emptyScreenImage.image = UIImage(named: "EmptyTrackers")
-        emptyScreenImage.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        let emptyScreenText = UILabel()
-        emptyScreenText.translatesAutoresizingMaskIntoConstraints = false
-        emptyScreenText.text = "Что будем отслеживать?"
-        emptyScreenText.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        
         view.addSubview(emptyScreenImage)
         view.addSubview(emptyScreenText)
         
-        NSLayoutConstraint.activate([
-            emptyScreenImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            emptyScreenImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emptyScreenText.topAnchor.constraint(equalTo: emptyScreenImage.bottomAnchor, constant: 8),
-            emptyScreenText.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+        emptyScreenImage.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            emptyScreenImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            emptyScreenText.topAnchor.constraint(equalTo: emptyScreenImage.bottomAnchor, constant: 8).isActive = true
+            emptyScreenText.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         return view
+    }()
+    
+    private lazy var emptyScreenImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "EmptyTrackers")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var emptyScreenText: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Что будем отслеживать?"
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        return label
     }()
     
     private lazy var trackersCollectionView: UICollectionView = {
@@ -103,7 +106,8 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
         datePicker.preferredDatePickerStyle = .compact
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(setDateForTrackers), for: .valueChanged)
-        datePicker.maximumDate = Date()
+// Закомитил так как это визуально прикольно но ограничивать даты просмотра привычек противоречит ТЗ как вариант эксперементировать в будущем оставлю
+//        datePicker.maximumDate = Date()
         let dateButton = UIBarButtonItem(customView: datePicker)
         
         return dateButton
@@ -147,6 +151,9 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
     }
     
      func setupEmptyScreen() {
+         let isSearch = presenter?.search.isEmpty ?? true
+                  emptyScreenImage.image = isSearch ? UIImage(named: "EmptyTrackers") : UIImage(named: "EmptyStatistics")
+         emptyScreenText.text = isSearch ? "Что будем отслеживать?" : "Ничего не найдено"
         emptyScreenView.isHidden = presenter?.categories.count ?? 0 > 0
         trackersCollectionView.isHidden = presenter?.categories.count == 0
     }
@@ -222,13 +229,10 @@ extension TrackersViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         setupEmptyScreen()
-//        return presenter?.categories.count ?? 0
-//        presenter?.numberOfSections() ?? 0
         return presenter?.numberOfSections() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return presenter?.categories[section].trackers.count ?? 0
         presenter?.numberOfItemsInSection(section: section) ?? 0
     }
     
@@ -236,14 +240,8 @@ extension TrackersViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrackerConstant.cellIdentifier, for: indexPath) as? TrackerViewCollectionCell,
               let presenter
         else { return UICollectionViewCell() }
-        
-//        let tracker = presenter.categories[indexPath.section].trackers[indexPath.row]
-//
-//        cell.tracker = tracker
         cell.viewModel = presenter.trackerViewModel(at: indexPath)
         cell.delegate = self
-//        cell.completTracker = presenter.isCompletedTracker(tracker)
-//        cell.daysCounter = presenter.countRecordTracker(tracker)
         return cell
     }
 }

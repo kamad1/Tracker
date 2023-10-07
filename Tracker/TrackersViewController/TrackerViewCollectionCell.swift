@@ -170,6 +170,7 @@ extension TrackerViewCollectionCell {
         daysCounter = viewModel.daysCounter
         tracker = viewModel.tracker
         completTracker = viewModel.isCompleted
+        counterButton.isEnabled = viewModel.isComplitionEnable
     }
     
     @objc

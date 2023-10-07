@@ -12,6 +12,10 @@ final class HabitPresenter: HabitPresenterProtocol {
     
     var categories: [TrackerCategory]
     
+    var categoryName: String? {
+             selectedCategory?.name
+         }
+    
     var selectedCategory: TrackerCategory?
     
     var view: HabitViewControllerProtocol?
@@ -19,6 +23,14 @@ final class HabitPresenter: HabitPresenterProtocol {
     var type: TrackerType
     
     var schedule: [Int] = []
+    
+    var sheduleString: String {
+             if schedule.count == DayFormatter.weekdays.count {
+                 return "Каждый день"
+             } else {
+                 return schedule.map { DayFormatter.shortWeekday(at: $0)}.joined(separator: ", ")
+             }
+         }
     
     var isValidForm: Bool {
         selectedCategory != nil && trackerName != nil && !schedule.isEmpty
