@@ -8,7 +8,7 @@ final class HabitPresenter: HabitPresenterProtocol {
     
     var trackerName: String?
     
-    var subtitleForCategory: String = ""
+    var subTitleForCategory: String = ""
     
     var categories: [TrackerCategory]
     

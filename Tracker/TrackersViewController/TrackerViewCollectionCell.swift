@@ -5,13 +5,13 @@ final class TrackerViewCollectionCell: UICollectionViewCell {
     
     var delegate: TrackerViewCollectionCellDelegate?
     
-    var daysCounter: Int = 0 {
+   private var daysCounter: Int = 0 {
         didSet {
             updateCountLabel()
         }
     }
     
-    var tracker: Tracker? {
+    private var tracker: Tracker? {
         didSet {
             name.text = tracker?.name
             emoji.text = tracker?.emoji
@@ -20,9 +20,16 @@ final class TrackerViewCollectionCell: UICollectionViewCell {
         }
     }
     
-    var completTracker: Bool = false {
+    private var completTracker: Bool = false {
         didSet {
             updateButonState()
+        }
+    }
+    
+     var viewModel: TrackerCell? {
+        didSet {
+            guard let viewModel else { return }
+            setupViewModel(viewModel: viewModel)
         }
     }
     
@@ -159,6 +166,12 @@ extension TrackerViewCollectionCell {
         days.text = dayLabelCell
     }
     
+    private func setupViewModel(viewModel: TrackerCell){
+        daysCounter = viewModel.daysCounter
+        tracker = viewModel.tracker
+        completTracker = viewModel.isCompleted
+    }
+    
     @objc
     private func checkForToDay() {
         if completTracker {
@@ -168,6 +181,6 @@ extension TrackerViewCollectionCell {
         }
         completTracker = !completTracker
         guard let tracker else { return }
-        delegate?.toDidComleted(completTracker, tracker: tracker)
+        delegate?.toDidCompleted(completTracker, tracker: tracker)
     }
 }

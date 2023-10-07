@@ -2,5 +2,6 @@
 import UIKit
 
 protocol TrackersViewControllerProtocol: AnyObject {
-    var presenter: TrackersViewPresenter? { get }
+    var presenter: TrackersViewPresenterProtocol? { get }
+    func setupEmptyScreen()
 }

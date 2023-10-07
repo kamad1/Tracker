@@ -3,7 +3,6 @@ import UIKit
 final class TrackersViewPresenter: TrackersViewPresenterProtocol {
     var categories: [TrackerCategory] = []
     weak var view: TrackersViewControllerProtocol?
-    private let service = ServiceAllTracker()
     var search: String = "" {
         didSet {
             updateCategories()
@@ -14,6 +13,8 @@ final class TrackersViewPresenter: TrackersViewPresenterProtocol {
             updateCategories()
         }
     }
+    
+    private let service = ServiceAllTracker()
     
     func updateCategories() {
         categories = service.getCategories(date: currentDate, search: search)
@@ -38,5 +39,18 @@ final class TrackersViewPresenter: TrackersViewPresenterProtocol {
     
     func countRecordTracker(_ tracker: Tracker) -> Int {
         service.completedTrackers.filter({ $0.id == tracker.id }).count
+    }
+    
+    func numberOfSections() -> Int? {
+             view?.setupEmptyScreen()
+             return categories.count
+         }
+
+    func numberOfItemsInSection(section: Int) -> Int {
+             categories[section].trackers.count
+         }
+    func trackerViewModel(at indexPath: IndexPath) -> TrackerCell {
+        let tracker = categories[indexPath.section].trackers[indexPath.row]
+                 return TrackerCell(tracker: tracker, isCompleted: isCompletedTracker(tracker), daysCounter: countRecordTracker(tracker))
     }
 }

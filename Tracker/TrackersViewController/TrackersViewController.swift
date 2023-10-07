@@ -10,7 +10,7 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
         static let spacing: CGFloat = 9
     }
     
-    var presenter: TrackersViewPresenter?
+    var presenter: TrackersViewPresenterProtocol?
     
     //Делегаты
     func didSelectType(_ type: TrackerType) {
@@ -35,7 +35,7 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
         trackersCollectionView.reloadData()
     }
     
-    func toDidComleted(_ complete: Bool, tracker: Tracker) {
+    func toDidCompleted(_ complete: Bool, tracker: Tracker) {
         presenter?.completedTracker(complete, tracker: tracker)
     }
 
@@ -103,7 +103,7 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
         datePicker.preferredDatePickerStyle = .compact
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(setDateForTrackers), for: .valueChanged)
-        
+        datePicker.maximumDate = Date()
         let dateButton = UIBarButtonItem(customView: datePicker)
         
         return dateButton
@@ -146,7 +146,7 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
         navigationBar.topItem?.setRightBarButton(datePickerButton, animated: true)
     }
     
-    private func setupEmptyScreen() {
+     func setupEmptyScreen() {
         emptyScreenView.isHidden = presenter?.categories.count ?? 0 > 0
         trackersCollectionView.isHidden = presenter?.categories.count == 0
     }
@@ -222,11 +222,14 @@ extension TrackersViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         setupEmptyScreen()
-        return presenter?.categories.count ?? 0
+//        return presenter?.categories.count ?? 0
+//        presenter?.numberOfSections() ?? 0
+        return presenter?.numberOfSections() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.categories[section].trackers.count ?? 0
+//        return presenter?.categories[section].trackers.count ?? 0
+        presenter?.numberOfItemsInSection(section: section) ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -234,12 +237,13 @@ extension TrackersViewController: UICollectionViewDataSource {
               let presenter
         else { return UICollectionViewCell() }
         
-        let tracker = presenter.categories[indexPath.section].trackers[indexPath.row]
-        
-        cell.tracker = tracker
+//        let tracker = presenter.categories[indexPath.section].trackers[indexPath.row]
+//
+//        cell.tracker = tracker
+        cell.viewModel = presenter.trackerViewModel(at: indexPath)
         cell.delegate = self
-        cell.completTracker = presenter.isCompletedTracker(tracker)
-        cell.daysCounter = presenter.countRecordTracker(tracker)
+//        cell.completTracker = presenter.isCompletedTracker(tracker)
+//        cell.daysCounter = presenter.countRecordTracker(tracker)
         return cell
     }
 }
