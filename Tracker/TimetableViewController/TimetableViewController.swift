@@ -51,7 +51,7 @@ final class TimetableViewController: UIViewController, TimetableViewControllerPr
 
     private func setupNavigationBar() {
         if let navigationBar = navigationController?.navigationBar {
-            navigationBar.topItem?.title = "Новая привычка"
+            navigationBar.topItem?.title = "Расписание"
         }
     }
     

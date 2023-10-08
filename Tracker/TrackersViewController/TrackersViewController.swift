@@ -144,6 +144,15 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
         navigationBar.topItem?.largeTitleDisplayMode = .always
         
         let searchController = UISearchController(searchResultsController: nil)
+        // сделал что бы строка поиска не скрывалась при переходе
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "Поиск"
+        //Логическое значение, которое указывает, скрывает ли приложение интегрированную строку поиска при прокрутке любого базового контента.
+        navigationItem.hidesSearchBarWhenScrolling = false
+        // изменил название кнопки в поиске как в макете
+        searchController.searchBar.setValue("Отменить", forKey: "cancelButtonText")
+        // ен работает searchController.searchBar.becomeFirstResponder()
+        
         searchController.searchBar.delegate = self
         navigationBar.topItem?.searchController = searchController
         
