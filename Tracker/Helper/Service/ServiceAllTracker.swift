@@ -4,7 +4,6 @@ import UIKit
 final class ServiceAllTracker: ServiceAllTrackerProtocol {
     
     var categories: [TrackerCategory] = []
-    //    var visibleCategories: [TrackerCategory] = []
     var completedTrackers: Set<TrackerRecord> = []
     
     init() {
