@@ -1,5 +1,4 @@
 
-
 import UIKit
 
 class TrackerTypeViewController: UIViewController, TrackerTypeViewControllerProtocol {

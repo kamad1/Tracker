@@ -1,6 +1,5 @@
 import UIKit
 
-
 final class CollectionCell: UITableViewCell {
     
     enum CollectionCellType {

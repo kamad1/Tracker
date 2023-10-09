@@ -1,5 +1,4 @@
 
-
 import UIKit
 
 final class TimetablePresenter: TimetablePresenterProtocol {

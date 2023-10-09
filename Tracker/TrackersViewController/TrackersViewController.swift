@@ -1,5 +1,4 @@
 
-
 import UIKit
 
 final class TrackersViewController: UIViewController, TrackersViewControllerProtocol, TrackerTypeDelegate, NewHabitDelegate, TrackerViewCollectionCellDelegate {
