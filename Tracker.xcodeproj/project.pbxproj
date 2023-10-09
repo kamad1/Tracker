@@ -223,11 +223,11 @@
 		818B3B352ACED510004C14EE /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				812C8F792AD1ABD200464CA0 /* Service */,
-				818B3B382ACEEF06004C14EE /* Model */,
 				818B3B362ACED522004C14EE /* Colors.swift */,
 				812C8F462AD1950700464CA0 /* DayFormatter.swift */,
 				812C8F482AD1959600464CA0 /* ExtensionUIView.swift */,
+				812C8F792AD1ABD200464CA0 /* Service */,
+				818B3B382ACEEF06004C14EE /* Model */,
 			);
 			path = Helper;
 			sourceTree = "<group>";

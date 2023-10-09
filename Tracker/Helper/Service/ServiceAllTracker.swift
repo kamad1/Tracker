@@ -4,7 +4,7 @@ import UIKit
 final class ServiceAllTracker: ServiceAllTrackerProtocol {
     
     var categories: [TrackerCategory] = []
-//    var visibleCategories: [TrackerCategory] = []
+    //    var visibleCategories: [TrackerCategory] = []
     var completedTrackers: Set<TrackerRecord> = []
     
     init() {
@@ -33,9 +33,12 @@ final class ServiceAllTracker: ServiceAllTrackerProtocol {
     
     func addTracker(_ tracker: Tracker, at category: TrackerCategory) {
         var trackers = category.trackers
+        
         trackers.append(tracker)
+        
         let newCategory = TrackerCategory(name: category.name, trackers: trackers)
         var categories = self.categories
+        
         if let index = categories.firstIndex(where: { $0.name == category.name } ) {
             categories[index] = newCategory
         } else {
@@ -47,7 +50,9 @@ final class ServiceAllTracker: ServiceAllTrackerProtocol {
     func addCompliteTrackers(tracker: Tracker, date: Date) {
         var completedTrackers = self.completedTrackers
         let trackerToRecord = TrackerRecord(id: tracker.id, date: date)
+        
         completedTrackers.insert(trackerToRecord)
+        
         self.completedTrackers = completedTrackers
         
     }
@@ -55,7 +60,9 @@ final class ServiceAllTracker: ServiceAllTrackerProtocol {
     func removeCompletedTrackers(tracker: Tracker, date: Date) {
         var completedTrackers = self.completedTrackers
         let trackerToRemove = TrackerRecord(id: tracker.id, date: date)
+        
         completedTrackers.remove(trackerToRemove)
+        
         self.completedTrackers = completedTrackers
     }
 }
