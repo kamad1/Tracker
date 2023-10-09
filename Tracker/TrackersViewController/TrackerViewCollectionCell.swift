@@ -5,7 +5,7 @@ final class TrackerViewCollectionCell: UICollectionViewCell {
     
     var delegate: TrackerViewCollectionCellDelegate?
     
-   private var daysCounter: Int = 0 {
+    private var daysCounter: Int = 0 {
         didSet {
             updateCountLabel()
         }
@@ -26,7 +26,7 @@ final class TrackerViewCollectionCell: UICollectionViewCell {
         }
     }
     
-     var viewModel: TrackerCell? {
+    var viewModel: TrackerCell? {
         didSet {
             guard let viewModel else { return }
             setupViewModel(viewModel: viewModel)

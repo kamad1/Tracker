@@ -9,7 +9,9 @@ protocol TrackersViewPresenterProtocol {
     
     var currentDate: Date { get set }
     
-    var categories: [TrackerCategory] { get }
+    var visibleCategories: [TrackerCategory] { get }
+    
+    var categoriess: [TrackerCategory] { get }
     
     func addTracker(_ tracker: Tracker, at category: TrackerCategory)
     

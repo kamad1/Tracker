@@ -4,10 +4,12 @@ import UIKit
 
 final class TimetablePresenter: TimetablePresenterProtocol {
     
-    var view: TimetableViewControllerProtocol
+    weak var view: TimetableViewControllerProtocol?
+    
     var delegate: TimetableDelegate
     
     var selectedWeekdays: [Int]
+    
     let weekdays = DayFormatter.weekdays
     
     init(view: TimetableViewControllerProtocol, selected: [Int], delegate: TimetableDelegate) {

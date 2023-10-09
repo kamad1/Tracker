@@ -48,7 +48,7 @@ final class TimetableViewController: UIViewController, TimetableViewControllerPr
         setupTimetableScreen()
         
     }
-
+    
     private func setupNavigationBar() {
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.topItem?.title = "Расписание"
@@ -74,7 +74,6 @@ final class TimetableViewController: UIViewController, TimetableViewControllerPr
         setupAllSubViews()
         readyButton.setTitle("Готово", for: .normal)
     }
-    
     
     @objc
     private func setTimetable() {
@@ -124,6 +123,7 @@ extension TimetableViewController: UITableViewDataSource {
 
 extension TimetableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 75
     }
 }

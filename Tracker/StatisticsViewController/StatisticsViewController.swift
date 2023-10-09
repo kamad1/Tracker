@@ -1,7 +1,7 @@
 
 import UIKit
 
-class StatisticsViewController: UIViewController {
+final class StatisticsViewController: UIViewController {
     
     private lazy var emptyScreenImage: UIImageView = {
         let emptyScreenImage = UIImageView()

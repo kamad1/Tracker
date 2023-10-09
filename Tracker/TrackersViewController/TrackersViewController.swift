@@ -6,6 +6,7 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
     
     enum TrackerConstant {
         static let cellIdentifier = "TrackerCell"
+        static let headerIdentifier = "TrackersHeader"
         static let contentInsets: CGFloat = 16
         static let spacing: CGFloat = 9
     }
@@ -14,18 +15,17 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
     var comletedTracker: Bool = false
     //Делегаты
     func didSelectType(_ type: TrackerType) {
-        let viewCont3 = HabitViewController()
-        let presenter = HabitPresenter(type: type, categories: presenter?.categories ?? [])
-        
-        viewCont3.presenter = presenter
-        presenter.view = viewCont3
+        let vc = HabitViewController()
+        let presenter = HabitPresenter(type: type, categories: presenter?.categoriess ?? [])
+        vc.presenter = presenter
+        presenter.view = vc
         
         presenter.delegate = self
         
-        viewCont3.modalPresentationStyle = .formSheet
-        viewCont3.modalTransitionStyle = .coverVertical
-        viewCont3.isModalInPresentation = true
-        let navigationController = UINavigationController(rootViewController: viewCont3)
+        vc.modalPresentationStyle = .formSheet
+        vc.modalTransitionStyle = .coverVertical
+        vc.isModalInPresentation = true
+        let navigationController = UINavigationController(rootViewController: vc)
         self.present(navigationController, animated: true)
     }
     
@@ -39,7 +39,7 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
         presenter?.completedTracker(complete, tracker: tracker)
         comletedTracker = !comletedTracker
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,9 +63,9 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
         view.addSubview(emptyScreenText)
         
         emptyScreenImage.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-            emptyScreenImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            emptyScreenText.topAnchor.constraint(equalTo: emptyScreenImage.bottomAnchor, constant: 8).isActive = true
-            emptyScreenText.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        emptyScreenImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        emptyScreenText.topAnchor.constraint(equalTo: emptyScreenImage.bottomAnchor, constant: 8).isActive = true
+        emptyScreenText.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         return view
     }()
@@ -87,16 +87,14 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
     
     private lazy var trackersCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .ypWhite
         collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: TrackerConstant.cellIdentifier)
-        collectionView.register(TrackerViewCollectionCell.self, forCellWithReuseIdentifier: TrackerConstant.cellIdentifier)
         collectionView.contentInset = UIEdgeInsets(top: 24, left: TrackerConstant.contentInsets, bottom: 24, right: TrackerConstant.contentInsets)
-        collectionView.register(SupportView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
+        collectionView.register(TrackerViewCollectionCell.self, forCellWithReuseIdentifier: TrackerConstant.cellIdentifier)
+        collectionView.register(SupportView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TrackerConstant.headerIdentifier)
         return collectionView
     }()
     
@@ -106,8 +104,8 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
         datePicker.preferredDatePickerStyle = .compact
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(setDateForTrackers), for: .valueChanged)
-// Закомитил так как это визуально прикольно но ограничивать даты просмотра привычек противоречит ТЗ как вариант эксперементировать в будущем оставлю
-//        datePicker.maximumDate = Date()
+        // Закомитил так как это визуально прикольно но ограничивать даты просмотра привычек противоречит ТЗ как вариант эксперементировать в будущем оставлю
+        //        datePicker.maximumDate = Date()
         let dateButton = UIBarButtonItem(customView: datePicker)
         
         return dateButton
@@ -159,12 +157,12 @@ final class TrackersViewController: UIViewController, TrackersViewControllerProt
         navigationBar.topItem?.setRightBarButton(datePickerButton, animated: true)
     }
     
-     func setupEmptyScreen() {
-         let isSearch = presenter?.search.isEmpty ?? true
-                  emptyScreenImage.image = isSearch ? UIImage(named: "EmptyTrackers") : UIImage(named: "EmptyStatistics")
-         emptyScreenText.text = isSearch ? "Что будем отслеживать?" : "Ничего не найдено"
-        emptyScreenView.isHidden = presenter?.categories.count ?? 0 > 0
-        trackersCollectionView.isHidden = presenter?.categories.count == 0
+    func setupEmptyScreen() {
+        let isSearch = presenter?.search.isEmpty ?? true
+        emptyScreenImage.image = isSearch ? UIImage(named: "EmptyTrackers") : UIImage(named: "EmptyStatistics")
+        emptyScreenText.text = isSearch ? "Что будем отслеживать?" : "Ничего не найдено"
+        emptyScreenView.isHidden = presenter?.visibleCategories.count ?? 0 > 0
+        trackersCollectionView.isHidden = presenter?.visibleCategories.count == 0
     }
     
     @objc
@@ -226,10 +224,9 @@ extension TrackersViewController: UICollectionViewDelegateFlowLayout {
 extension TrackersViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let id = "header"
+        guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TrackerConstant.headerIdentifier, for: indexPath) as? SupportView else { return UICollectionReusableView() }
+        view.title.text = presenter?.visibleCategories[indexPath.section].name
         
-        guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: id, for: indexPath) as? SupportView else { return UICollectionReusableView() }
-        view.title.text = presenter?.categories[indexPath.section].name
         return view
     }
 }
@@ -238,6 +235,7 @@ extension TrackersViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         setupEmptyScreen()
+        
         return presenter?.numberOfSections() ?? 0
     }
     
@@ -251,6 +249,7 @@ extension TrackersViewController: UICollectionViewDataSource {
         else { return UICollectionViewCell() }
         cell.viewModel = presenter.trackerViewModel(at: indexPath)
         cell.delegate = self
+        
         return cell
     }
 }

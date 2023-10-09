@@ -20,5 +20,9 @@ protocol HabitPresenterProtocol {
     
     var isValidForm: Bool { get }
     
+    var emoji: String? { get set }
+    
+    var color: UIColor? { get set }
+    
     func createNewTracker()
 }

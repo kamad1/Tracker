@@ -9,10 +9,9 @@ class SupportView: UICollectionReusableView {
         super.init(frame: frame)
         
         addSubview(title)
-        title.font = .systemFont(ofSize: 18, weight: .bold)
+        title.font = .systemFont(ofSize: 19, weight: .bold)
         title.textColor = .ypBlack
         title.translatesAutoresizingMaskIntoConstraints = false
-        
         title.topAnchor.constraint(equalTo: topAnchor).isActive = true
         title.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true

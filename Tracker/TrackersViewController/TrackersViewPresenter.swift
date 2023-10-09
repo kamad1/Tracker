@@ -1,8 +1,12 @@
 import UIKit
 
 final class TrackersViewPresenter: TrackersViewPresenterProtocol {
-    var categories: [TrackerCategory] = []
     weak var view: TrackersViewControllerProtocol?
+    
+    var visibleCategories: [TrackerCategory] = []
+    
+    var categoriess: [TrackerCategory] = []
+    
     var search: String = "" {
         didSet {
             updateCategories()
@@ -17,7 +21,8 @@ final class TrackersViewPresenter: TrackersViewPresenterProtocol {
     private let service = ServiceAllTracker()
     
     func updateCategories() {
-        categories = service.getCategories(date: currentDate, search: search)
+        visibleCategories = service.getCategories(date: currentDate, search: search)
+        categoriess = service.categories
     }
     
     func addTracker(_ tracker: Tracker, at category: TrackerCategory) {
@@ -42,15 +47,15 @@ final class TrackersViewPresenter: TrackersViewPresenterProtocol {
     }
     
     func numberOfSections() -> Int? {
-             view?.setupEmptyScreen()
-             return categories.count
-         }
-
+        view?.setupEmptyScreen()
+        return visibleCategories.count
+    }
+    
     func numberOfItemsInSection(section: Int) -> Int {
-             categories[section].trackers.count
-         }
+        visibleCategories[section].trackers.count
+    }
     func trackerViewModel(at indexPath: IndexPath) -> TrackerCell {
-        let tracker = categories[indexPath.section].trackers[indexPath.row]
+        let tracker = visibleCategories[indexPath.section].trackers[indexPath.row]
         return TrackerCell(isComplitionEnable: currentDate <= Date(), tracker: tracker, isCompleted: isCompletedTracker(tracker), daysCounter: countRecordTracker(tracker))
     }
 }

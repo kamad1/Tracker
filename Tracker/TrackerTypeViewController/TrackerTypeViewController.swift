@@ -69,14 +69,14 @@ class TrackerTypeViewController: UIViewController, TrackerTypeViewControllerProt
     @objc
     private func pushNewHabitViewController(sender: UIButton) {
         dismiss(animated: true) {
-            self.presenter?.selectType(.Habit)
+            self.presenter?.selectType(.habit)
         }
     }
     
     @objc
     private func pushUnregularEventViewController(sender: UIButton) {
         dismiss(animated: true) {
-            self.presenter?.selectType(.NotRegularEvent)
+            self.presenter?.selectType(.notRegularEvent)
         }
     }
 }
