@@ -119,15 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		812C8F4A2AD1963100464CA0 /* StatisticsViewController */ = {
+		812C8F4A2AD1963100464CA0 /* StatisticsViewController-статистика */ = {
 			isa = PBXGroup;
 			children = (
 				812C8F4B2AD1963D00464CA0 /* StatisticsViewController.swift */,
 			);
-			path = StatisticsViewController;
+			path = "StatisticsViewController-статистика";
 			sourceTree = "<group>";
 		};
-		812C8F4D2AD19C6000464CA0 /* TrackerTypeViewController */ = {
+		812C8F4D2AD19C6000464CA0 /* TrackerTypeViewController-выбор */ = {
 			isa = PBXGroup;
 			children = (
 				812C8F4E2AD19C7400464CA0 /* TrackerTypeViewController.swift */,
@@ -136,10 +136,10 @@
 				812C8F542AD19CBD00464CA0 /* TrackerTypePresenterProtocol.swift */,
 				812C8F562AD19CC900464CA0 /* TrackerTypeDelegate.swift */,
 			);
-			path = TrackerTypeViewController;
+			path = "TrackerTypeViewController-выбор";
 			sourceTree = "<group>";
 		};
-		812C8F582AD19EE900464CA0 /* HabitViewController */ = {
+		812C8F582AD19EE900464CA0 /* HabitViewController-привычка */ = {
 			isa = PBXGroup;
 			children = (
 				812C8F592AD19EF400464CA0 /* HabitViewController.swift */,
@@ -148,7 +148,7 @@
 				812C8F5F2AD19F3000464CA0 /* HabitPresenterProtocol.swift */,
 				812C8F612AD19F4000464CA0 /* NewHabitDelegate.swift */,
 			);
-			path = HabitViewController;
+			path = "HabitViewController-привычка";
 			sourceTree = "<group>";
 		};
 		812C8F632AD1A4A700464CA0 /* TimetableViewController */ = {
@@ -204,10 +204,10 @@
 				81FCE1372AD409D1004B6532 /* Cells&View Collections */,
 				812C8F702AD1A8EA00464CA0 /* Table&Text Cell */,
 				812C8F632AD1A4A700464CA0 /* TimetableViewController */,
-				812C8F582AD19EE900464CA0 /* HabitViewController */,
-				812C8F4A2AD1963100464CA0 /* StatisticsViewController */,
+				812C8F582AD19EE900464CA0 /* HabitViewController-привычка */,
+				812C8F4A2AD1963100464CA0 /* StatisticsViewController-статистика */,
 				818B3B442ACEF204004C14EE /* TrackersViewController */,
-				812C8F4D2AD19C6000464CA0 /* TrackerTypeViewController */,
+				812C8F4D2AD19C6000464CA0 /* TrackerTypeViewController-выбор */,
 				818B3B412ACEF15B004C14EE /* TabBarController */,
 				818B3B352ACED510004C14EE /* Helper */,
 				818B3B212ACDC451004C14EE /* AppDelegate.swift */,

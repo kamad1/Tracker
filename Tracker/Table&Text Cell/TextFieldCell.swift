@@ -15,6 +15,7 @@ final class TextFieldCell: UITableViewCell {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.clearButtonMode = .always
         textField.delegate = self
+        textField.addTarget(self, action: #selector(textFieldChangedText), for: .editingChanged)
         return textField
     }()
     
@@ -58,7 +59,11 @@ extension TextFieldCell: UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    @objc func textFieldChangedText() {
         delegate?.didTextChange(text: textField.text)
+       
     }
+    
+    
+ 
 }

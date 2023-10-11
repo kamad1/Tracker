@@ -201,7 +201,7 @@ extension TrackersViewController: UISearchBarDelegate {
 extension TrackersViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.bounds.width - TrackerConstant.contentInsets * 2 - TrackerConstant.spacing) / 2 , height: 148)
+        return CGSize(width: (collectionView.bounds.width - TrackerConstant.contentInsets * 2 - TrackerConstant.spacing) / 2 , height: 150)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

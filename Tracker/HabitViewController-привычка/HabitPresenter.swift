@@ -48,12 +48,13 @@ final class HabitPresenter: HabitPresenterProtocol {
     var isValidForm: Bool {
         switch type {
         case .habit:
-            return selectedCategory != nil && trackerName != nil && !schedule.isEmpty && emoji != nil && color != nil
+            return selectedCategory != nil && trackerName != nil && trackerName != "" && !schedule.isEmpty && emoji != nil && color != nil
         case .notRegularEvent:
-            return selectedCategory != nil && trackerName != nil && emoji != nil && color != nil
+            return selectedCategory != nil && trackerName != nil && trackerName != "" && emoji != nil && color != nil
         }
     }
     
+
     init(type: TrackerType, categories: [TrackerCategory]) {
         self.type = type
         self.selectedCategory = categories.first
